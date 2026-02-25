@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 #         model=register
 #         fields='__all__'
 
+
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, min_length=6)
 
