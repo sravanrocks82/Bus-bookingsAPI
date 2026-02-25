@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wo(uc7&es3$y1$(y+z^=a=+-0e$^9s&2gyq1=o1_5^46x=ge%)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -52,7 +52,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bookings.urls'
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
