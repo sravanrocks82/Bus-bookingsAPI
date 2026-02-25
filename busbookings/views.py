@@ -14,8 +14,8 @@ from .serializers import busSerializer, seatSerializer
 class BusViewSet(viewsets.ModelViewSet):
     queryset = Bus.objects.all()
     serializer_class = busSerializer
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 from django.db import transaction
@@ -27,8 +27,8 @@ from rest_framework import status
 class SeatViewSet(viewsets.ModelViewSet):
     queryset = Seat.objects.all()
     serializer_class = seatSerializer
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
 
     @action(detail=True, methods=['post'])
     def book(self, request, pk=None):
