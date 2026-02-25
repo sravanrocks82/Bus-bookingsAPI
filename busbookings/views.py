@@ -9,7 +9,18 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .models import Bus, Seat
 from .serializers import busSerializer, seatSerializer
+from django.db import transaction
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import generics
+from django.contrib.auth.models import User
+from .serializers import RegisterSerializer
 
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
 
 class BusViewSet(viewsets.ModelViewSet):
     queryset = Bus.objects.all()
@@ -18,10 +29,7 @@ class BusViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-from django.db import transaction
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework import status
+
 
 
 class SeatViewSet(viewsets.ModelViewSet):
