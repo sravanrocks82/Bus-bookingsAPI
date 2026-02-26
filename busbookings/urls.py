@@ -5,7 +5,9 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from django.urls import include, path
-# from bookings.busbookings.models import Bus, Seat
+
+
+
 
 
 router = DefaultRouter()
